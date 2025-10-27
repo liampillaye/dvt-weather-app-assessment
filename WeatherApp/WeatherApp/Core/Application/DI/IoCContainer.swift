@@ -14,12 +14,17 @@ final class IoCContainer {
     static func registerDependencies() {
         
         //MARK: MANAGERS
-        
+        register { DefaultForecast5Manager(service: resolve()) as Forecast5Manager }
+
         //MARK: REPOSITORIES
         
         //MARK: SERVICES
+        register { MockForecast5Service() as Forecast5Service }
+
         
         //MARK:VIEWMODELS
+        register { @MainActor in ForecastViewModel(manager: resolve())}
+
     }
     
     static func register<T>(_ factory: @escaping () -> T) {

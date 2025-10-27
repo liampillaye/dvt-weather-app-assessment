@@ -29,6 +29,34 @@
 			);
 			target = 651F1F912EAAA96C00674FD3 /* WeatherApp */;
 		};
+		654C04A82EAFCFE900614719 /* Exceptions for "WeatherApp" folder in "WeatherAppTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Core/Application/UseCases/5DayForecast/Managers/DefaultForecast5Manager.swift,
+				Core/Application/UseCases/5DayForecast/Managers/Forecast5Manager.swift,
+				Core/Application/UseCases/5DayForecast/Responses/CityResponse.swift,
+				Core/Application/UseCases/5DayForecast/Responses/CloudsResponse.swift,
+				Core/Application/UseCases/5DayForecast/Responses/CoordResponse.swift,
+				Core/Application/UseCases/5DayForecast/Responses/DescriptionResponse.swift,
+				Core/Application/UseCases/5DayForecast/Responses/ForecastResponse.swift,
+				Core/Application/UseCases/5DayForecast/Responses/ListResponse.swift,
+				Core/Application/UseCases/5DayForecast/Responses/MainEnumResponse.swift,
+				Core/Application/UseCases/5DayForecast/Responses/MainResponse.swift,
+				Core/Application/UseCases/5DayForecast/Responses/PodResponse.swift,
+				Core/Application/UseCases/5DayForecast/Responses/RainResponse.swift,
+				Core/Application/UseCases/5DayForecast/Responses/SysResponse.swift,
+				Core/Application/UseCases/5DayForecast/Responses/WeatherResponse.swift,
+				Core/Application/UseCases/5DayForecast/Responses/WindResponse.swift,
+				Core/Domain/Constants/Constants.swift,
+				Core/Domain/Data/Mocks/CapeTown5DayWeatherForecast.json,
+				Core/Domain/Models/Forecast.swift,
+				Infrastructure/Infrastructure/Extensions/CodableBundleExtension.swift,
+				Infrastructure/Infrastructure/Services/Forecast5Service.swift,
+				Infrastructure/Infrastructure/Services/MockForecast5Service.swift,
+				Presentation/5DayForecast/ForecastViewModel.swift,
+			);
+			target = 651F1F9E2EAAA96E00674FD3 /* WeatherAppTests */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -36,6 +64,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				651F20F52EAB7E3300674FD3 /* Exceptions for "WeatherApp" folder in "WeatherApp" target */,
+				654C04A82EAFCFE900614719 /* Exceptions for "WeatherApp" folder in "WeatherAppTests" target */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";

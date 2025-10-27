@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ForecastResponse: Codable {
+public struct ForecastResponse: Codable {
     let cod: String
     let message, cnt: Int
     let list: [ListResponse]

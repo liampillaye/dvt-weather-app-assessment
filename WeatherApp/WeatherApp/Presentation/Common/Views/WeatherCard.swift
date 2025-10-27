@@ -6,17 +6,24 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct WeatherCard: View {
     
-    let dayOfWeek: String
-    let temperature: String
+    let dayOfWeek: Date
+    let temperature: Double
     let iconName: String
+    
+    var formattedDate: String {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "EEEE"
+            return formatter.string(from: dayOfWeek)
+    }
     
     var body: some View {
         HStack {
             VStack {
-                Text(dayOfWeek)
+                Text(formattedDate)
                     .weatherTitleCardPoppinsSemiBoldStyle()
                     .padding(.top, 15)
                 Spacer()
@@ -30,7 +37,7 @@ struct WeatherCard: View {
             VStack() {
                 Spacer()
                 HStack {
-                    Text("\(temperature)")
+                    Text(temperature.formatted(.number.precision(.fractionLength(0))))
                         .weatherTempPoppinsBoldStyle()
                     Circle()
                         .stroke(.black, lineWidth: 3) // Blue outline with 5 point thickness
@@ -53,5 +60,5 @@ struct WeatherCard: View {
 
 //:PREVIEW
 #Preview {
-    WeatherCard(dayOfWeek: "Monday", temperature: "20", iconName: "Sunny")
+    WeatherCard(dayOfWeek: Date.now, temperature: 29.1 , iconName: "Sunny")
 }

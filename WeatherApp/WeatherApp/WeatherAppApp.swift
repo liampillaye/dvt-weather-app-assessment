@@ -2,16 +2,23 @@
 //  WeatherAppApp.swift
 //  WeatherApp
 //
-//  Created by Liam Pillaye on 2025/10/23.
+//  Created by Liam Pillaye.
 //
 
 import SwiftUI
 
 @main
 struct WeatherAppApp: App {
+    
+    init() {
+        IoCContainer.registerDependencies()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ForecastView()
+            let viewModel: ForecastViewModel = IoCContainer.resolve()
+
+            ForecastView(viewModel: viewModel)
         }
     }
 }
