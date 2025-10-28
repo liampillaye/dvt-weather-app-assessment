@@ -10,27 +10,35 @@ import Foundation
 
 struct WeatherCard: View {
     
+    //MARK: PROPERTIES
     let dayOfWeek: Date
     let temperature: Double
     let iconName: String
-    
+    @Binding var isLoading: Bool
+
     var formattedDate: String {
             let formatter = DateFormatter()
             formatter.dateFormat = "EEEE"
             return formatter.string(from: dayOfWeek)
     }
     
+    //MARK: BODY
     var body: some View {
         HStack {
             VStack {
                 Text(formattedDate)
                     .weatherTitleCardPoppinsSemiBoldStyle()
                     .padding(.top, 15)
+                    .redacted(reason: isLoading ? .placeholder : [])
+                    .shimmering(condition: isLoading)
                 Spacer()
-                Image("ClearSky-Day")
+                Image(iconName)
                     .resizable()
                     .frame(width: 80, height: 80)
                     .padding(.bottom, 10)
+                    .redacted(reason: isLoading ? .placeholder : [])
+                    .shimmering(condition: isLoading)
+
             }//:VSTACK
             .padding()
             Spacer()
@@ -39,11 +47,16 @@ struct WeatherCard: View {
                 HStack {
                     Text(temperature.formatted(.number.precision(.fractionLength(0))))
                         .weatherTempPoppinsBoldStyle()
-                    Circle()
-                        .stroke(.black, lineWidth: 3) // Blue outline with 5 point thickness
-                        .frame(width: 10, height: 10)
-                        .padding(.bottom,30)
-                        .padding(.leading, -5)
+                        .redacted(reason: isLoading ? .placeholder : [])
+                        .shimmering(condition: isLoading)
+                    
+                    if !isLoading {
+                        Circle()
+                            .stroke(.black, lineWidth: 3) // Blue outline with 5 point thickness
+                            .frame(width: 10, height: 10)
+                            .padding(.bottom,30)
+                            .padding(.leading, -5)
+                    }
                 }//:HSTACK
             }//:VSTACK
             .padding()
@@ -57,8 +70,29 @@ struct WeatherCard: View {
     }//:BODY
 }
 
+extension View {
+    @ViewBuilder
+    func shimmering(condition: Bool) -> some View {
+        if condition {
+            self.modifier(ShimmerModifier())
+        } else {
+            self
+        }
+    }
+}
+
 
 //:PREVIEW
 #Preview {
-    WeatherCard(dayOfWeek: Date.now, temperature: 29.1 , iconName: "Sunny")
+    
+    struct Preview: View {
+        
+        @State var isLoading = false
+
+        var body: some View {
+            WeatherCard(dayOfWeek: Date.now, temperature: 29.1 , iconName: "Sunny", isLoading: $isLoading)
+        }
+    }
+    
+    return Preview()
 }

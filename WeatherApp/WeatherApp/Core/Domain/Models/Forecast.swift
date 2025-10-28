@@ -30,7 +30,7 @@ extension Weather {
         case .rain:
             return "RainyBg"
         default:
-            return "SunnnyBg"
+            return "SunnyBg"
         }
     }
 }

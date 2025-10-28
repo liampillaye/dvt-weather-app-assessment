@@ -23,7 +23,9 @@ final class IoCContainer {
 
         
         //MARK:VIEWMODELS
-        register { @MainActor in ForecastViewModel(manager: resolve())}
+        register { @MainActor in
+            ForecastViewModel(manager: resolve())
+        }
 
     }
     
