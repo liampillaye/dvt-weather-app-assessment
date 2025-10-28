@@ -32,6 +32,7 @@
 		654C04A82EAFCFE900614719 /* Exceptions for "WeatherApp" folder in "WeatherAppTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Core/Application/Shared/Response.swift,
 				Core/Application/UseCases/5DayForecast/Managers/DefaultForecast5Manager.swift,
 				Core/Application/UseCases/5DayForecast/Managers/Forecast5Manager.swift,
 				Core/Application/UseCases/5DayForecast/Responses/CityResponse.swift,
@@ -52,6 +53,7 @@
 				Core/Domain/Data/Mocks/SkeletonDefaultForecast.swift,
 				Core/Domain/Models/Forecast.swift,
 				Infrastructure/Infrastructure/Extensions/CodableBundleExtension.swift,
+				Infrastructure/Infrastructure/HttpClient/HttpClient.swift,
 				Infrastructure/Infrastructure/Services/DefaultForecast5Service.swift,
 				Infrastructure/Infrastructure/Services/Forecast5Service.swift,
 				Infrastructure/Infrastructure/Services/MockForecast5Service.swift,
