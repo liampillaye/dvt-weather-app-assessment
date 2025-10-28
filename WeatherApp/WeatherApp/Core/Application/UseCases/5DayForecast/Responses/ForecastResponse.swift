@@ -13,7 +13,3 @@ public struct ForecastResponse: Codable, Response{
     let list: [ListResponse]
     let city: CityResponse
 }
-
-
-
-

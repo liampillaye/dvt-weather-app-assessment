@@ -28,6 +28,7 @@ struct ForecastView: View {
                 HStack {
                     Text(Constants.FiveDayForecast.title)
                         .padding(.leading)
+                        .safeAreaPadding(.top)
                         .headingPoppinsBoldStyle()
                     Spacer()
                 }//:HSTACK
@@ -93,7 +94,6 @@ struct ForecastView: View {
         }
     }//:BODY
 }
-
 
 //MARK: PREVIEW
 #Preview {

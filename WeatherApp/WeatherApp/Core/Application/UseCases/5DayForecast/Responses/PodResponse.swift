@@ -5,10 +5,9 @@
 //  Created by Liam Pillaye.
 //
 
-
 import Foundation
 
 enum PodResponse: String, Codable {
-    case d = "d"
-    case n = "n"
+    case day = "d"
+    case night = "n"
 }

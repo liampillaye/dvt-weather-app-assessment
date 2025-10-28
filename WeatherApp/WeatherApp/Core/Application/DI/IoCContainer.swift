@@ -9,7 +9,7 @@ import Foundation
 
 final class IoCContainer {
     
-    private static var factories: [String: () -> Any] = [:]
+    nonisolated(unsafe) private static var factories: [String: () -> Any] = [:]
     
     static func registerDependencies() {
         
@@ -19,11 +19,9 @@ final class IoCContainer {
         //MARK: HttpClient
         register { DefaultHttpClient() as HttpClient }
 
-        
         //MARK: SERVICES
         register { DefaultForecast5Service(httpClient: resolve()) as Forecast5Service }
 
-        
         //MARK:VIEWMODELS
         register { @MainActor in
             ForecastViewModel(manager: resolve())

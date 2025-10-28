@@ -5,7 +5,6 @@
 //  Created by Liam Pillaye.
 //
 
-
 import Foundation
 
 enum DescriptionResponse: String, Codable {

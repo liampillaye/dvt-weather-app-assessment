@@ -130,6 +130,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				65C958592EB15A8D0028D7A0 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				651F1F942EAAA96C00674FD3 /* WeatherApp */,
@@ -192,6 +193,9 @@
 			);
 			mainGroup = 651F1F892EAAA96C00674FD3;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				65654B1F2EB14C60005148C9 /* XCRemoteSwiftPackageReference "SwiftLint" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 651F1F932EAAA96C00674FD3 /* Products */;
 			projectDirPath = "";
@@ -242,6 +246,10 @@
 			isa = PBXTargetDependency;
 			target = 651F1F912EAAA96C00674FD3 /* WeatherApp */;
 			targetProxy = 651F1FA02EAAA96E00674FD3 /* PBXContainerItemProxy */;
+		};
+		65C958592EB15A8D0028D7A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 65C958582EB15A8D0028D7A0 /* SwiftLintBuildToolPlugin */;
 		};
 /* End PBXTargetDependency section */
 
@@ -299,7 +307,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -357,7 +365,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -437,7 +445,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Q5A3BYCM26;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.dvt.WeatherAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -456,7 +464,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Q5A3BYCM26;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = za.co.dvt.WeatherAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -498,6 +506,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		65654B1F2EB14C60005148C9 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.62.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		65C958582EB15A8D0028D7A0 /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65654B1F2EB14C60005148C9 /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 651F1F8A2EAAA96C00674FD3 /* Project object */;
 }

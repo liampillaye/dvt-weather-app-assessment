@@ -10,7 +10,7 @@ import CoreLocation
 
 @MainActor final class ForecastViewModel: NSObject, @preconcurrency CLLocationManagerDelegate, ObservableObject {
     
-    //MARK: PROPS
+    // MARK: PROPS
     private var manager: Forecast5Manager!
     private var locationManager: CLLocationManager = CLLocationManager()
     

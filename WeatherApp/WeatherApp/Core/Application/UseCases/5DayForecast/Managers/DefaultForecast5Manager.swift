@@ -18,7 +18,7 @@ final class DefaultForecast5Manager: Forecast5Manager {
     }
     
     //MARK: PROTOCOL
-    func fetch5DayForecast(for lat: Double, lon: Double) async throws -> [Forecast] {
+    nonisolated func fetch5DayForecast(for lat: Double, lon: Double) async throws -> [Forecast] {
              
         do {
             let response = try await self.service.fetchForecast5(for: lat, lon: lon)
@@ -26,11 +26,15 @@ final class DefaultForecast5Manager: Forecast5Manager {
             var fiveDayWeatherForecast: [Forecast] = []
             let days = [0.0, 24, 48, 73, 96];
             
-            for i in 0..<days.count {
+            for index in 0..<days.count {
                 let filteredForecast = response.list.first {
-                    return getForecastDateRangeBy(day: days[i]).contains(Date(timeIntervalSince1970: TimeInterval($0.dt)))
+                    let date = days[index] * 60.0 * 60.0
+                    let min = Date.now.addingTimeInterval(date)
+                    let max = min.addingTimeInterval(10800)
+                    let dateRange = min..<max
+                    return dateRange.contains(Date(timeIntervalSince1970: TimeInterval($0.dt)))
                 }
-                
+                                
                 //TODO: Throw forecast not found exception here for possible edgecase
                 guard let filteredForecast = filteredForecast else { continue }
                 

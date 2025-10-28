@@ -1,0 +1,11 @@
+force_cast: warning # implicitly
+
+# Alternatively, specify all rules explicitly by uncommenting this option:
+only_rules: # delete `disabled_rules` & `opt_in_rules` if using this
+  - empty_parameters
+  - vertical_whitespace
+  - force_cast
+
+strict: false
+
+lenient: true
