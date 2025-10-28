@@ -51,6 +51,7 @@
 				Core/Domain/Data/Mocks/CapeTown5DayWeatherForecast.json,
 				Core/Domain/Models/Forecast.swift,
 				Infrastructure/Infrastructure/Extensions/CodableBundleExtension.swift,
+				Infrastructure/Infrastructure/Services/DefaultForecast5Service.swift,
 				Infrastructure/Infrastructure/Services/Forecast5Service.swift,
 				Infrastructure/Infrastructure/Services/MockForecast5Service.swift,
 				Presentation/5DayForecast/ForecastViewModel.swift,

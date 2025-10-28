@@ -16,10 +16,12 @@ final class IoCContainer {
         //MARK: MANAGERS
         register { DefaultForecast5Manager(service: resolve()) as Forecast5Manager }
 
-        //MARK: REPOSITORIES
+        //MARK: HttpClient
+        register { DefaultHttpClient() as HttpClient }
+
         
         //MARK: SERVICES
-        register { MockForecast5Service() as Forecast5Service }
+        register { DefaultForecast5Service(httpClient: resolve()) as Forecast5Service }
 
         
         //MARK:VIEWMODELS
