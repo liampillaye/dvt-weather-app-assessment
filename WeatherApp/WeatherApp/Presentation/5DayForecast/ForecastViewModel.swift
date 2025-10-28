@@ -31,7 +31,6 @@ import CoreLocation
     //MARK: PRIVATE FUNCS
     func requestPermissions() {
         self.locationManager.startUpdatingLocation()
-        self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.requestAlwaysAuthorization()
     }
     
@@ -39,10 +38,15 @@ import CoreLocation
         self.locationManager.stopUpdatingLocation()
     }
     
-    func fetchForecast(for lat: Double, lon: Double) async {
+    func fetchForecast() async {
         do {
             isBusy = true
-            forecasts = try await manager.fetch5DayForecast(for: lat, lon: lon)
+            if let coordinate = lastSeenLocation?.coordinate {
+                let lat: Double = coordinate.latitude
+                let lon: Double = coordinate.longitude
+                forecasts = try await self.manager.fetch5DayForecast(for: coordinate.latitude, lon: coordinate.longitude)
+            }
+            isBusy = false
         } catch {
             isBusy = false
             print("Error fetching forecast: \(error)")
@@ -50,12 +54,12 @@ import CoreLocation
     }
     
     //MARK: LOCATION DELEGATES
-//    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-//        authorisationStatus = manager.authorizationStatus
-//    }
-//    
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        lastSeenLocation = locations.first
-//        coordinate = lastSeenLocation?.coordinate
-//    }
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        authorizationStatus = manager.authorizationStatus
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        lastSeenLocation = locations.first
+        coordinate = lastSeenLocation?.coordinate
+    }
 }

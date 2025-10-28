@@ -10,29 +10,11 @@ import CoreLocationUI
 
 struct ForecastView: View {
     
+    //MARK: PRIVATES
     @State private var isAnimating = false
     @State private var isLoading = true
-    
-    @StateObject var locationManager = LocationManager()
     @StateObject var viewModel: ForecastViewModel
-    
-    //MARK: - PRIVATE FUNCTIONS
-    @discardableResult private func fetchForecast() {
-        Task {
-            await viewModel.fetchForecast(for: 33.9221, lon: 18.4231)
-            isLoading = !viewModel.isBusy
-
-//            if let coordinate = locationManager.lastKnownLocation {
-//                await viewModel.fetchForecast(for: coordinate.latitude, lon: coordinate.longitude)
-//                isLoading = !viewModel.isBusy
-//            } else {
-//                //Default to Cape Town if permissions denied
-//                await viewModel.fetchForecast(for: 33.9221, lon: 18.4231)
-//                isLoading = !viewModel.isBusy
-//            }
-        }
-    }
-    
+        
     //MARK: BODY
     var body: some View {
         ZStack {
@@ -62,23 +44,23 @@ struct ForecastView: View {
             }//:VSTACK
         }
         .onAppear {
-            //            viewModel.requestPermissions()
-            if locationManager.authorizationStatus == .notDetermined {
-                locationManager.requestLocationAuthorization()
+            if viewModel.authorizationStatus == .notDetermined {
+                viewModel.requestPermissions()
             }
 
             withAnimation(.easeInOut(duration:8).repeatForever(autoreverses: true)) {
                 isAnimating = true
             }
             
-        }
-        .onReceive(locationManager.$authorizationStatus) { authorisationStatus in
+        } //:ONAPPEAR
+        .onReceive(viewModel.$authorizationStatus) { authorisationStatus in
             switch authorisationStatus {
             case .notDetermined:
                 print("request permission")
             case .authorizedAlways, .authorizedWhenInUse:
                 Task {
-                    await fetchForecast()
+                    await viewModel.fetchForecast()
+                    isLoading = viewModel.isBusy
                 }
                 break;
             case .restricted, .denied:
@@ -86,13 +68,15 @@ struct ForecastView: View {
             @unknown default:
                 print("do nothing")
             }
-        }
+        }//:ONRECEIVE
         .onDisappear {
-            //            viewModel.stopUpdatingLocation()
-        }
-    }
+            viewModel.stopUpdatingLocation()
+        }//ONDISAPEAR
+    }//:BODY
 }
 
+
+//MARK: PREVIEW
 #Preview {
     struct Preview: View {
         
