@@ -14,8 +14,11 @@ import CoreLocation
     private var manager: Forecast5Manager!
     private var locationManager: CLLocationManager = CLLocationManager()
     
+    //MARK: PUBLISHED
     @Published private(set) var forecasts: [Forecast] = []
     @Published private(set) var isBusy = false
+    @Published private(set) var showError: Bool = false
+    @Published private(set) var errorMessage = ""
     @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
     @Published var lastSeenLocation: CLLocation?
     @Published var coordinate: CLLocationCoordinate2D?
@@ -47,11 +50,12 @@ import CoreLocation
             isBusy = false
         } catch {
             isBusy = false
-            print("Error fetching forecast: \(error)")
+            self.errorMessage = error.localizedDescription
+            showError = true
         }
     }
     
-    //MARK: LOCATION DELEGATES
+    //MARK: CLLOCATION DELEGATES
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         authorizationStatus = manager.authorizationStatus
     }

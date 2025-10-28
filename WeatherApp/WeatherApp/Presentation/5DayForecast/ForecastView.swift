@@ -13,6 +13,8 @@ struct ForecastView: View {
     //MARK: PRIVATES
     @State private var isAnimating = false
     @State private var isLoading = true
+    @State private var showErrorAlert = false
+    @State private var errorMessage = ""
     @StateObject var viewModel: ForecastViewModel
         
     //MARK: BODY
@@ -69,9 +71,25 @@ struct ForecastView: View {
                 print("do nothing")
             }
         }//:ONRECEIVE
+        .onReceive(viewModel.$showError, perform: { showError in
+            if showError {
+                showErrorAlert = showError
+                errorMessage = viewModel.errorMessage
+            }
+        })
         .onDisappear {
             viewModel.stopUpdatingLocation()
         }//ONDISAPEAR
+        .alert("ERROR", isPresented: $showErrorAlert) {
+            Button("Yes") {
+                //Do nothing
+            }
+            Button("Cancel") {
+                //Do nothing
+            }
+        } message: {
+            Text("\(errorMessage)")
+        }
     }//:BODY
 }
 
