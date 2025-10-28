@@ -45,14 +45,4 @@ final class ForecastDefaultManagerTest: XCTestCase {
         XCTAssertNotNil(forecasts)
         XCTAssertTrue(dateRange.contains(forecasts.first!.dt as Date))
     }
-
-    func testPerformanceExample() async throws {
-        //Arrange
-        let defaultForecastManager: Forecast5Manager = DefaultForecast5Manager(service: mockService!)
-
-        self.measure {
-//            try? defaultForecastManager.fetch5DayForecast(for: 0.0, lon: 0.0)
-        }
-    }
-
 }
