@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import CoreLocation
 
 final class ForecastViewModelTest: XCTestCase {
     
@@ -29,7 +30,8 @@ final class ForecastViewModelTest: XCTestCase {
         let viewModel: ForecastViewModel? = ForecastViewModel(manager: forecastManager!)
         
         //Act
-        await viewModel?.fetchForecast(for: 0.0, lon: 0.0)
+        viewModel?.coordinate = CLLocationCoordinate2D(latitude: 32.6514, longitude: -161.4333)
+        await viewModel?.fetchForecast()
         
         //Assert
         XCTAssertNotNil(viewModel)
@@ -41,7 +43,7 @@ final class ForecastViewModelTest: XCTestCase {
         let viewModel: ForecastViewModel? = ForecastViewModel(manager: forecastManager!)
         
         //Act
-        await viewModel?.fetchForecast(for: 0.0, lon: 0.0)
+        await viewModel?.fetchForecast()
         
         //Assert
         XCTAssertNotNil(viewModel)
