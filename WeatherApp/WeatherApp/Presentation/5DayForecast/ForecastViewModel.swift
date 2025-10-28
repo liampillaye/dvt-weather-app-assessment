@@ -42,8 +42,6 @@ import CoreLocation
         do {
             isBusy = true
             if let coordinate = lastSeenLocation?.coordinate {
-                let lat: Double = coordinate.latitude
-                let lon: Double = coordinate.longitude
                 forecasts = try await self.manager.fetch5DayForecast(for: coordinate.latitude, lon: coordinate.longitude)
             }
             isBusy = false
