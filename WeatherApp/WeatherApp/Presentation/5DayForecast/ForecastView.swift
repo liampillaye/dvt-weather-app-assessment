@@ -20,13 +20,13 @@ struct ForecastView: View {
     //MARK: BODY
     var body: some View {
         ZStack {
-            Image(viewModel.forecasts.first?.weather.backgroundImage ?? "SunnyBg")
+            Image(viewModel.forecasts.first?.weather.backgroundImage ?? Constants.FiveDayForecast.defaultBackgoundImageName)
                 .resizable()
                 .scaledToFit()
                 .scaleEffect(isAnimating ? 1.4 : 1.2)
             VStack {
                 HStack {
-                    Text("5 Day Forecast")
+                    Text(Constants.FiveDayForecast.title)
                         .padding(.leading)
                         .headingPoppinsBoldStyle()
                     Spacer()
@@ -41,7 +41,6 @@ struct ForecastView: View {
                                 temperature: forecast.temp,
                                 iconName: forecast.weather.weatherIcon, isLoading: $isLoading)
                 }
-                
                 Spacer()
             }//:VSTACK
         }
@@ -80,11 +79,13 @@ struct ForecastView: View {
         .onDisappear {
             viewModel.stopUpdatingLocation()
         }//ONDISAPEAR
-        .alert("ERROR", isPresented: $showErrorAlert) {
-            Button("Yes") {
-                //Do nothing
+        .alert(Constants.FiveDayForecast.alertTitle, isPresented: $showErrorAlert) {
+            Button(Constants.FiveDayForecast.alertRetryButtonTitle) {
+                Task {
+                    await viewModel.fetchForecast()
+                }
             }
-            Button("Cancel") {
+            Button(Constants.FiveDayForecast.alertCancelButtonTitle) {
                 //Do nothing
             }
         } message: {

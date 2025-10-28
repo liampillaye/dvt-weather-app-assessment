@@ -15,7 +15,7 @@ import CoreLocation
     private var locationManager: CLLocationManager = CLLocationManager()
     
     //MARK: PUBLISHED
-    @Published private(set) var forecasts: [Forecast] = []
+    @Published private(set) var forecasts: [Forecast] = skeletonForecast
     @Published private(set) var isBusy = false
     @Published private(set) var showError: Bool = false
     @Published private(set) var errorMessage = ""
@@ -49,7 +49,6 @@ import CoreLocation
             }
             isBusy = false
         } catch {
-            isBusy = false
             self.errorMessage = error.localizedDescription
             showError = true
         }

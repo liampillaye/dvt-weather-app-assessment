@@ -70,6 +70,7 @@ struct WeatherCard: View {
     }//:BODY
 }
 
+//:EXTENSION
 extension View {
     @ViewBuilder
     func shimmering(condition: Bool) -> some View {
