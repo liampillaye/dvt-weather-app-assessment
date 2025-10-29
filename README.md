@@ -1,5 +1,5 @@
-# dvt-weather-app-assessment
-DVT Weather App Assessment > Create a weather application to display a 5-day weather forecast
+# DVT Weather App Assessment
+Create a weather application to display a 5-day weather forecast using the built in CoreLocation public API and device GPS.
 
 ## Demo
 
