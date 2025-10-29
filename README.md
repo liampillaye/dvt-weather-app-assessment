@@ -5,8 +5,6 @@ DVT Weather App Assessment > Create a weather application to display a 5-day wea
 
 Simulator Demo of the WeatherApp 
 
-https://github.com/user-attachments/assets/4ad32347-aad5-4ad8-a25e-3ce46bbd04fb
-
 [Project Reference]()
 
 ---
