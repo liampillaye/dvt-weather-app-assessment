@@ -16,7 +16,7 @@ struct ForecastView: View {
     @State private var showErrorAlert = false
     @State private var errorMessage = ""
     @StateObject var viewModel: ForecastViewModel
-        
+    
     //MARK: BODY
     var body: some View {
         ZStack {
@@ -49,7 +49,7 @@ struct ForecastView: View {
             if viewModel.authorizationStatus == .notDetermined {
                 viewModel.requestPermissions()
             }
-
+            
             withAnimation(.easeInOut(duration:8).repeatForever(autoreverses: true)) {
                 isAnimating = true
             }
@@ -61,6 +61,7 @@ struct ForecastView: View {
                 print("request permission")
             case .authorizedAlways, .authorizedWhenInUse:
                 Task {
+                    try? await Task.sleep(nanoseconds: 2_000_000_000)
                     await viewModel.fetchForecast()
                     isLoading = viewModel.isBusy
                 }
