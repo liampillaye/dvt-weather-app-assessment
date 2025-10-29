@@ -60,6 +60,17 @@ xcodebuild test -scheme WeatherApp -destination 'platform=iOS Simulator,name=iPh
 Includes:
 Unit tests (business logic)
 
+Test Coverage (Report)
+
+![XCTest Report](Demo/TestEvidence/Unit-Test-And-Coverage.png)
+
+
+
+API Postman collection
+
+[DVT Weather App Assessment.postman_collection.json](.PostmanCollection/DVT-WeatherApp-Assessment.postman_collection.json)
+
+
 ---
 
 ## Project Structure
@@ -78,6 +89,26 @@ WeatherApp/
  ├─ Assets/               # Images, Icons
  ├─ Tests/                # XCTest & mocks
 ```
+
+---
+
+## SwiftLint 
+
+Added SwiftLint Swift Package Management
+
+[.swiftLint.yml](WeatherApp/.swiftlint.yml)
+
+Generate Report
+```bash
+swiftlint lint --reporter html > swiftlint.html
+```
+
+SwiftLint Report
+
+![Report Evidence](Demo/TestEvidence/SwiftLint-Report.png)
+
+[SwiftLink Report Raw](WeatherApp/swiftlint.html)
+
 
 ---
 
